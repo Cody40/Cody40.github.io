@@ -28,6 +28,8 @@
             const imageData = ictx.getImageData(0, 0, ictx.width, ictx.height);
             const data = imageData.data;
 
+            console.log(data);
+
             for (let i = 0; i < data.length; i+=4) {
                 const r = data[i];
                 const g = data[i+1];
