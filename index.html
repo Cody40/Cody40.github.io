@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/fav.png">
+    <link rel="stylesheet" href="style.css">
+    <title>행렬</title>
+</head>
+<body>
+    <img src="image.png" alt="nope no image for u" id="source" style="display: none;" crossorigin="anonymous">
+    <input type="text" id="matrix" value="{[1, 1, 1], [1, 1, 1], [1, 1, 1]}" size="40"><br><br>
+    <canvas id="icanvas"></canvas><p>원본 이미지</p>
+    <canvas id="ocanvas"></canvas><p>필터 적용</p>
+    <script>
+        const icanvas = document.getElementById("icanvas");
+        const ictx = icanvas.getContext("2d");
+        const ocanvas = document.getElementById("ocanvas");
+        const octx = ocanvas.getContext("2d");
+
+        const img = document.getElementById("source");
+
+        img.onload = () => {
+            icanvas.width = ocanvas.width = img.width;
+            icanvas.height = ocanvas.height = img.height;
+            
+            ictx.drawImage(img, 0, 0);
+
+            const imageData = ictx.getImageData(0, 0, ictx.width, ictx.height);
+            const data = imageData.data;
+
+            for (let i = 0; i < data.length; i+=4) {
+                const r = data[i];
+                const g = data[i+1];
+                const b = data[i+2];
+            };
+        };
+    </script>
+</body>
+</html>
