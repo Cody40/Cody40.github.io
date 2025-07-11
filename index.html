@@ -25,6 +25,9 @@
             
             ictx.drawImage(img, 0, 0);
 
+            console.log(ictx.width);
+            cosnole.log(ictx.height);
+
             const imageData = ictx.getImageData(0, 0, ictx.width, ictx.height);
             const data = imageData.data;
 
