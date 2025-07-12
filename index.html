@@ -25,7 +25,8 @@
         const inputtext = document.getElementById("matrix");
 
         let data;
-
+        let Running = false;
+        
         inputtext.value = "[1, 1, 1]\n[1, 1, 1]\n[1, 1, 1]"
         
         img.onload = () => {
@@ -41,6 +42,11 @@
             data = imageData.data;
         };
         function applyfilter() {
+            if (Running) return;
+            Running = true;
+            const button = document.getElementById("operate");
+            button.value = "변환하는 중...";
+            
             octx.width = img.width;
             octx.height = img.height;
 
@@ -67,6 +73,8 @@
             const oimagedata = new ImageData(rgbaarray, octx.width, octx.height);
 
             octx.putImageData(oimagedata, 0, 0);
+            Running = false;
+            button.value = "변환하기";
         };
     </script>
 </body>
