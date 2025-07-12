@@ -45,7 +45,7 @@
             if (Running) return;
             Running = true;
             const button = document.getElementById("operate");
-            button.value = "변환하는 중...";
+            button.textContent = "변환하는 중...";
             
             octx.width = img.width;
             octx.height = img.height;
@@ -74,7 +74,7 @@
 
             octx.putImageData(oimagedata, 0, 0);
             Running = false;
-            button.value = "변환하기";
+            button.textContent = "변환하기";
         };
     </script>
 </body>
