@@ -14,7 +14,7 @@
     <div class="align"><p1>위에 보이시는 것처럼 이미지의 모든 픽셀의 RGB 값을 행렬처럼 놓고 3x3 행렬을 곱해서 이미지에 필터를 적용합니다.<br>아래 예시에서 직접 필터를 적용해 보실 수 있어요.</p1></div><br><br><br><br><br><br>
     <div class="align" style="height:43px"><p>[변환행렬]</p></div><div class="align"><textarea id="matrix" rows="3" cols="20" style="resize:none; overflow:hidden; font-size:30px; text-align:center;"></textarea></div><div class="align"><p3>글상자를 클릭해서 변경할 수 있습니다.</p3></div><br><br><br><br><br><br>
     <div class="align"style="height:43px"><p>[원본 이미지]</p></div><div class="align"><canvas id="icanvas"></canvas></div><br><br>
-    <div class="align"><button id="operate" onclick="applyfilter()" style="height:40px; background-color:#fffa00; cursor:pointer;">변환하기</button></div><br><br>
+    <div class="align"><button id="operate" onclick="applyfilter()0" style="height:40px; background-color:#fffa00; cursor:pointer;">변환하기</button></div><br><br>
     <div class="align" style="height:43px"><p>[필터가 적용된 이미지]</p></div><div class="align"><canvas id="ocanvas"></canvas></div>
     <script>
         const icanvas = document.getElementById("icanvas");
@@ -46,6 +46,8 @@
             Running = true;
             const button = document.getElementById("operate");
             button.textContent = "변환하는 중...";
+            button.style.background-color = "gray";
+            button.style.cursor = "default";
             
             octx.width = img.width;
             octx.height = img.height;
@@ -75,6 +77,8 @@
             octx.putImageData(oimagedata, 0, 0);
             Running = false;
             button.textContent = "변환하기";
+            button.style.background-color = #fffa00;
+            button.style.cursor = "pointer";
         };
     </script>
 </body>
