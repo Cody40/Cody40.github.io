@@ -52,6 +52,7 @@
             };
 
             console.log(matrix);
+            
             const rgbaarray = new Uint8ClampedArray(data.length);
             console.log(data.length);
             for (let i = 0; i < data.length; i+=4) {
@@ -64,16 +65,13 @@
                 rgbaarray[i+1] = r*matrix[3] + g*matrix[4] + b*matrix[5];
                 rgbaarray[i+2] = r*matrix[6] + g*matrix[7] + b*matrix[8];
                 rgbaarray[i+3] = data[i+3];
-
-                console.log(rgbaarray[i+1]);
-
-                const oimagedata = new ImageData(rgbaarray, octx.width, octx.height);
-
-                console.log(oimagedata);
-                console.log(rgbaarray);
-
-                octx.drawImage(oimagedata, 0, 0);
             };
+            const oimagedata = new ImageData(rgbaarray, octx.width, octx.height);
+
+            console.log(oimagedata);
+            console.log(rgbaarray);
+
+            octx.putImageData(oimagedata, 0, 0);
         };
     </script>
 </body>
