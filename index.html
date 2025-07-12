@@ -50,6 +50,8 @@
                 matrix.push(inputtext.value.split("\n")[x].split(", ")[1]);
                 matrix.push(inputtext.value.split("\n")[x].split(", ")[2].slice(0,-1));
             };
+            const oimgdata = Uint8Array(data.length*4);
+            console.log(data)
             for (let i = 0; i < data.length; i+=4) {
                 const r = data[i];
                 const g = data[i+1];
