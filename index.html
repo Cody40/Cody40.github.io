@@ -61,7 +61,7 @@
                 rgbaarray[i] = r*matrix[0] + g*matrix[1] + b*matrix[2];
                 rgbaarray[i+1] = r*matrix[3] + g*matrix[4] + b*matrix[5];
                 rgbaarray[i+2] = r*matrix[6] + g*matrix[7] + b*matrix[8];
-                rgbaarray[i+3] = i+3;
+                rgbaarray[i+3] = data[i+3];
 
                 const oimagedata = new ImageData(rgbaarray, octx.width, octx.height);
 
