@@ -50,12 +50,22 @@
                 matrix.push(inputtext.value.split("\n")[x].split(", ")[1]);
                 matrix.push(inputtext.value.split("\n")[x].split(", ")[2].slice(0,-1));
             };
-            const oimgdata = Uint8Array(data.length*4);
+            
+            const rgbaarray = new Uint8Array(data.length*);
             console.log(data)
             for (let i = 0; i < data.length; i+=4) {
                 const r = data[i];
                 const g = data[i+1];
                 const b = data[i+2];
+                
+                rgbaarray[i] = r*matrix[0] + g*matrix[1] + b*matrix[2];
+                rgbaarray[i+1] = r*matrix[3] + g*matrix[4] + b*matrix[5];
+                rgbaarray[i+2] = r*matrix[6] + g*matrix[7] + b*matrix[8];
+                rgbaarray[i+3] = i+3;
+
+                const oimagedata = new ImageData(data, octx.width, octx.height)
+
+                octx.drawImage(oimagedata, 0, 0);
             };
         };
     </script>
