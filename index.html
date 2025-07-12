@@ -33,6 +33,12 @@
         img.onload = () => {
             icanvas.width = ocanvas.width = img.width;
             icanvas.height = ocanvas.height = img.height;
+
+            ictx.height = img.height;
+            ictx.width = img.width;
+
+            octx.height = img.height;
+            octx.width = img.width;
             
             ictx.drawImage(img, 0, 0);
 
