@@ -28,13 +28,6 @@
 
         const img = document.getElementById("source");
 
-        function applyfilter() {
-            octx.width = img.width;
-            octx.height = img.height;
-            
-            octx.drawImage(img, 0, 0);            
-        }
-
         img.onload = () => {
             icanvas.width = ocanvas.width = img.width;
             icanvas.height = ocanvas.height = img.height;
@@ -52,6 +45,12 @@
                 const g = data[i+1];
                 const b = data[i+2];
             };
+        };
+        function applyfilter() {
+            octx.width = img.width;
+            octx.height = img.height;
+            
+            octx.drawImage(img, 0, 0);            
         };
     </script>
 </body>
