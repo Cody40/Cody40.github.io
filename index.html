@@ -51,10 +51,8 @@
                 matrix.push(inputtext.value.split("\n")[x].split(", ")[2].slice(0,-1));
             };
 
-            console.log(matrix);
-            
             const rgbaarray = new Uint8ClampedArray(data.length);
-            console.log(data.length);
+            
             for (let i = 0; i < data.length; i+=4) {
                 console.log(i)
                 const r = data[i];
@@ -67,9 +65,6 @@
                 rgbaarray[i+3] = data[i+3];
             };
             const oimagedata = new ImageData(rgbaarray, octx.width, octx.height);
-
-            console.log(oimagedata);
-            console.log(rgbaarray);
 
             octx.putImageData(oimagedata, 0, 0);
         };
