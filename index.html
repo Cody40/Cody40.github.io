@@ -23,7 +23,8 @@
         const octx = ocanvas.getContext("2d");
         const img = document.getElementById("source");
         const inputtext = document.getElementById("matrix");
-
+        const button = document.getElementById("operate");
+        
         let data;
         let Running = false;
         
@@ -32,9 +33,6 @@
         img.onload = () => {
             icanvas.width = ocanvas.width = img.width;
             icanvas.height = ocanvas.height = img.height;
-
-            ictx.width = img.width;
-            ictx.height = img.height;
             
             ictx.drawImage(img, 0, 0);
 
@@ -44,13 +42,9 @@
         function applyfilter() {
             if (Running) return;
             Running = true;
-            const button = document.getElementById("operate");
             button.textContent = "변환하는 중...";
             button.style.background-color = "gray";
             button.style.cursor = "default";
-            
-            octx.width = img.width;
-            octx.height = img.height;
 
             let matrix = [];
             for (let x = 0; x < 3; x++) {
@@ -62,7 +56,6 @@
             const rgbaarray = new Uint8ClampedArray(data.length);
             
             for (let i = 0; i < data.length; i+=4) {
-                console.log(i/4)
                 const r = data[i];
                 const g = data[i+1];
                 const b = data[i+2];
