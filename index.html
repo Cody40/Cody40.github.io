@@ -18,7 +18,7 @@
 [1, 1, 1]
     </textarea></div><div class="align"><p3>글상자를 클릭해서 변경할 수 있습니다.</p3></div><br><br><br><br><br><br>
     <div class="align"style="height:43px"><p>[원본 이미지]</p></div><div class="align"><canvas id="icanvas"></canvas></div><br><br>
-    <div class="align"><button id="operate" style="height:40px; background-color:#fffa00; cursor:pointer;">변환하기</button></div><br><br>
+    <div class="align"><button id="operate" onclick="applyfilter()" style="height:40px; background-color:#fffa00; cursor:pointer;">변환하기</button></div><br><br>
     <div class="align" style="height:43px"><p>[필터가 적용된 이미지]</p></div><div class="align"><canvas id="ocanvas"></canvas></div>
     <script>
         const icanvas = document.getElementById("icanvas");
@@ -27,6 +27,13 @@
         const octx = ocanvas.getContext("2d");
 
         const img = document.getElementById("source");
+
+        function applyfilter() {
+            octx.width = img.width;
+            octx.height = img.height;
+            
+            octx.drawImage(img, 0, 0);            
+        }
 
         img.onload = () => {
             icanvas.width = ocanvas.width = img.width;
@@ -37,13 +44,8 @@
             
             ictx.drawImage(img, 0, 0);
 
-            console.log(ictx.width);
-            console.log(ictx.height);
-
             const imageData = ictx.getImageData(0, 0, ictx.width, ictx.height);
             const data = imageData.data;
-
-            console.log(data);
 
             for (let i = 0; i < data.length; i+=4) {
                 const r = data[i];
