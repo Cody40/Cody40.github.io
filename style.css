@@ -18,6 +18,9 @@ p {
     align-items: center;
     justify-content: center;
 }
+p1 {
+    color:white;
+}
 p2 {
     color: white;
     font-size: 45px;
