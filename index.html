@@ -12,14 +12,14 @@
     <div class="align"><p3>공수1 - 주제탐구</p3></div><br><br><br><br><br>
     <div class="align"><img src="example.png" alt="nope no image for u" id="source" style="height:50%; width:50%;"></div><br>
     <div class="align"><p1>위에 보이시는 것처럼 이미지의 모든 픽셀의</p1><r style="color:#ff2121;">R</r><g style="color:#2eff2e;">G</g><b style="color:#432eff;">B</b><p1>값에 3x3 행렬을 곱해서 이미지에 필터를 적용합니다. 아래 예시에서 직접 필터를 적용해 보실 수 있어요.</p1></div><br><br><br><br><br><br>
-    <div class="align" style="height:38px;"><p>[변환행렬]</p></div><div class="align"><textarea name="matrix" id="matirx" rows="3" cols="20" style="resize:none; overflow:hidden; font-size:30px; text-align:center;">
+    <div class="align"><p>[변환행렬]</p></div><div class="align"><textarea name="matrix" id="matirx" rows="3" cols="20" style="resize:none; overflow:hidden; font-size:30px; text-align:center;">
 [1, 1, 1]
 [1, 1, 1]
 [1, 1, 1]
-    </textarea></div><div class="align"><p3>숫자를 클릭해서 변경할 수 있습니다.</p3></div><br><br><br>
-    <div class="align"><canvas id="icanvas"></canvas></div><div class="align"><p>[원본 이미지]</p></div><br><br>
+    </textarea></div><div class="align"><p3>숫자를 클릭해서 변경할 수 있습니다.</p3></div><br><br><br><br><br><br>
+    <div class="align"><p>[원본 이미지]</p></div><div class="align"><canvas id="icanvas"></canvas></div><br><br><br><br>
     <div class="align"><button id="operate" style="height:40px; width:60; background-color:#fffa00">변환하기</button></div><br><br><br><br>
-    <div class="align"><canvas id="ocanvas"></canvas></div><div class="align"><p>[필터 적용]</p></div>
+    <div class="align"><p>[필터 적용]</p></div><div class="align"><canvas id="ocanvas"></canvas></div>
     <script>
         const icanvas = document.getElementById("icanvas");
         const ictx = icanvas.getContext("2d");
