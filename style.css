@@ -13,3 +13,8 @@ p {
     color: white;
     font-size: 30px;
 }
+.allign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
