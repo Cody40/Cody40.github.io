@@ -12,7 +12,7 @@
     <div class="align"><p3>공수1 - 주제탐구</p3></div><br><br><br><br><br>
     <div class="align"><img src="example.png" alt="nope no image for u" id="source" style="height:50%; width:50%;"></div><br>
     <div class="align"><p1>위에 보이시는 것처럼 이미지의 모든 픽셀의</p1><r style="color:#ff2121;">R</r><g style="color:#2eff2e;">G</g><b style="color:#432eff;">B</b><p1>값에 3x3 행렬을 곱해서 이미지에 필터를 적용합니다. 아래 예시에서 직접 필터를 적용해 보실 수 있어요.</p1></div><br><br><br><br><br><br>
-    <div class="align" style="height:43px"><p>[변환행렬]</p></div><div class="align"><textarea id="matrix" rows="3" cols="20" style="resize:none; overflow:hidden; font-size:30px; text-align:center;">
+    <div class="align" style="height:43px"><p>[변환행렬]</p></div><div class="align"><textarea name="matrix" id="matirx" rows="3" cols="20" style="resize:none; overflow:hidden; font-size:30px; text-align:center;">
 [1, 1, 1]
 [1, 1, 1]
 [1, 1, 1]
@@ -25,8 +25,9 @@
         const ictx = icanvas.getContext("2d");
         const ocanvas = document.getElementById("ocanvas");
         const octx = ocanvas.getContext("2d");
-
         const img = document.getElementById("source");
+
+        let data;
 
         img.onload = () => {
             icanvas.width = ocanvas.width = img.width;
@@ -38,14 +39,25 @@
             ictx.drawImage(img, 0, 0);
 
             const imageData = ictx.getImageData(0, 0, ictx.width, ictx.height);
-            const data = imageData.data;
+            data = imageData.data;
         };
         function applyfilter() {
             octx.width = img.width;
             octx.height = img.height;
-            
-            octx.drawImage(img, 0, 0);
+
+            let inputtext = document.getElementById("matrix");
+            let matrix = [];
+
+            for (let x = 0; x < 3; x++) {
+                matrix.push(inputtext.value.split("\n")[x].split(", ")[0].slice(1));
+                matrix.push(inputtext.value.split("\n")[x].split(", ")[1]);
+                matrix.push(inputtext.value.split("\n")[x].split(", ")[2].slice(0,-1));
+            };
+            for (let i = 0; i < data.length; i+=4) {
+                const r = data[i];
+                const g = data[i+1];
+                const b = data[i+2];
+            };
         };
     </script>
 </body>
-</html>
