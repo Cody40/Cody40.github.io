@@ -10,7 +10,7 @@
     <img src="image.png" alt="nope no image for u" id="source" style="display: none;" crossorigin="anonymous">
     <div class="align"><p2>[행렬을 이용한 이미지 필터 적용 예시]</p2></div><br>
     <div class="align"><p3>공수1 - 주제탐구</p3></div><br><br><br><br><br>
-    <div class="align"><img src="example.png" alt="nope no image for u" id="source" style="height:50%; width:50%;"></div><br>
+    <div class="align"><img src="example.png" alt="nope no image for u" id="example" style="height:50%; width:50%;"></div><br>
     <div class="align"><p1>위에 보이시는 것처럼 이미지의 모든 픽셀의 RGB 값을 행렬처럼 놓고 3x3 행렬을 곱해서 이미지에 필터를 적용합니다.<br>아래 예시에서 직접 필터를 적용해 보실 수 있어요.</p1></div><br><br><br><br><br><br>
     <div class="align" style="height:43px"><p>[변환행렬]</p></div><div class="align"><textarea id="matrix" rows="3" cols="40" style="resize:none; overflow:hidden; font-size:30px; text-align:center;"></textarea></div><div class="align"><p3>글상자를 클릭해서 변경할 수 있습니다.</p3></div><br><br><br><br><br><br>
     <div class="align"style="height:43px"><p>[원본 이미지]</p></div><div class="align"><canvas id="icanvas"></canvas></div><br><br>
@@ -53,32 +53,33 @@
             button.style.backgroundColor = "gray";
             button.style.cursor = "default";
 
-            let matrix = [];
-            for (let x = 0; x < 3; x++) {
-                matrix.push(inputtext.value.split("\n")[x].split(", ")[0].slice(1));
-                matrix.push(inputtext.value.split("\n")[x].split(", ")[1]);
-                matrix.push(inputtext.value.split("\n")[x].split(", ")[2].slice(0,-1));
-            };
+            requestAnimationFrame(() => {
+                let matrix = [];
+                for (let x = 0; x < 3; x++) {
+                    matrix.push(inputtext.value.split("\n")[x].split(", ")[0].slice(1));
+                    matrix.push(inputtext.value.split("\n")[x].split(", ")[1]);
+                    matrix.push(inputtext.value.split("\n")[x].split(", ")[2].slice(0,-1));
+                };
 
-            const rgbaarray = new Uint8ClampedArray(data.length);
-            
-            for (let i = 0; i < data.length; i+=4) {
-                const r = data[i];
-                const g = data[i+1];
-                const b = data[i+2];
+                const rgbaarray = new Uint8ClampedArray(data.length);
                 
-                rgbaarray[i] = r*matrix[0] + g*matrix[1] + b*matrix[2];
-                rgbaarray[i+1] = r*matrix[3] + g*matrix[4] + b*matrix[5];
-                rgbaarray[i+2] = r*matrix[6] + g*matrix[7] + b*matrix[8];
-                rgbaarray[i+3] = data[i+3];
-            };
-            const oimagedata = new ImageData(rgbaarray, octx.width, octx.height);
+                for (let i = 0; i < data.length; i+=4) {
+                    const r = data[i];
+                    const g = data[i+1];
+                    const b = data[i+2];
+                    
+                    rgbaarray[i] = r*matrix[0] + g*matrix[1] + b*matrix[2];
+                    rgbaarray[i+1] = r*matrix[3] + g*matrix[4] + b*matrix[5];
+                    rgbaarray[i+2] = r*matrix[6] + g*matrix[7] + b*matrix[8];
+                    rgbaarray[i+3] = data[i+3];
+                };
+                const oimagedata = new ImageData(rgbaarray, octx.width, octx.height);
 
-            octx.putImageData(oimagedata, 0, 0);
-            Running = false;
-            button.textContent = "변환하기";
-            button.style.backgroundColor = "#fffa00";
-            button.style.cursor = "pointer";
+                octx.putImageData(oimagedata, 0, 0);
+                Running = false;
+                button.textContent = "변환하기";
+                button.style.backgroundColor = "#fffa00";
+                button.style.cursor = "pointer";
         };
     </script>
 </body>
