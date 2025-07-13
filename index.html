@@ -50,9 +50,9 @@
         
             let matrix = [];
             for (let x = 0; x < 3; x++) {
-                matrix.push(inputtext.value.split("\n")[x].split(", ")[0].slice(1));
-                matrix.push(inputtext.value.split("\n")[x].split(", ")[1]);
-                matrix.push(inputtext.value.split("\n")[x].split(", ")[2].slice(0,-1));
+                matrix.push(parseFloat(inputtext.value.split("\n")[x].split(", ")[0].slice(1)));
+                matrix.push(parseFloat(inputtext.value.split("\n")[x].split(", ")[1]));
+                matrix.push(parseFloat(inputtext.value.split("\n")[x].split(", ")[2].slice(0,-1)));
             };
 
             const rgbaarray = new Uint8ClampedArray(data.length);
