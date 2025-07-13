@@ -11,8 +11,8 @@
     <div class="align"><p2>[행렬을 이용한 이미지 필터 적용 예시]</p2></div><br>
     <div class="align"><p3>공수1 - 주제탐구</p3></div><br><br><br><br><br>
     <div class="align"><img src="example.png" alt="nope no image for u" id="example" style="height:50%; width:50%;"></div><br>
-    <div class="align"><p1>위에 보이시는 것처럼 이미지의 모든 픽셀의 RGB 값을 행렬처럼 놓고 3x3 행렬을 곱해서 이미지에 필터를 적용합니다.<br>아래 예시에서 직접 필터를 적용해 보실 수 있어요.</p1></div><br><br><br><br><br><br>
-    <div class="align" style="height:43px"><p>[변환행렬]</p></div><div class="align"><textarea id="matrix" rows="3" cols="40" style="resize:none; overflow:hidden; font-size:30px; text-align:center;"></textarea></div><div class="align"><p3>글상자를 클릭해서 변경할 수 있습니다.</p3></div><br><br><br><br><br><br>
+    <div class="align"><p1>위에 보이시는 것처럼 이미지의 모든 픽셀의 RGB 값을 3x1 행렬로 놓고 3x3 행렬을 곱해서 이미지에 필터를 적용합니다.<br>아래 예시에서 직접 필터를 적용해 보실 수 있어요.</p1></div><br><br><br><br><br><br>
+    <div class="align" style="height:43px"><p>[변환행렬]</p></div><div class="align"><textarea id="matrix" rows="3" cols="40" style="resize:none; overflow:hidden; font-size:30px; text-align:center;"></textarea></div><div class="align"><button onclick="grayscale()" style="height:40px; background-color:#fffa00; cursor:pointer;">흑백</button><button onclick="sepia()" style="height:40px; background-color:#fffa00; cursor:pointer;">세피아</button></div><div class="align"><p3>글상자를 클릭해서 변경할 수도 있습니다.</p3></div><br><br><br><br><br><br>
     <div class="align"style="height:43px"><p>[원본 이미지]</p></div><div class="align"><canvas id="icanvas"></canvas></div><br><br>
     <div class="align"><button id="operate" onclick="applyfilter()" style="height:40px; background-color:#fffa00; cursor:pointer;">변환하기</button></div><br><br>
     <div class="align" style="height:43px"><p>[필터가 적용된 이미지]</p></div><div class="align"><canvas id="ocanvas"></canvas></div>
@@ -72,6 +72,12 @@
             octx.putImageData(oimagedata, 0, 0);
             Running = false;
         };
+        function grayscale() {
+            inputtext.value = "[0.299, 0.587, 0.114]\n[0.299, 0.587, 0.114]\n[0.299, 0.587, 0.114]"
+        }
+        function sepia() {
+            inputtext.value = "[0.393, 0.769, 0.189]\n[0.349, 0.686, 0.168]\n[0.272, 0.534, 0.131]"
+        }
     </script>
     <br>
     <a href="https://github.com/Cody40/Cody40.github.io" target="_blank" rel="noopener noreferrer">소스코드 보기</a>
