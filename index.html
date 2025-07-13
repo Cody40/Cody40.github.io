@@ -23,7 +23,6 @@
         const octx = ocanvas.getContext("2d");
         const img = document.getElementById("source");
         const inputtext = document.getElementById("matrix");
-        const button = document.getElementById("operate");
         
         let data;
         let Running = false;
@@ -48,6 +47,8 @@
         function applyfilter() {
             if (Running) return;
             Running = true;
+
+            const button = document.getElementById("operate");
             button.textContent = "변환하는 중...";
             button.style.backgroundColor = "gray";
             button.style.cursor = "default";
